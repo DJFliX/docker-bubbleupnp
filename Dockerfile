@@ -16,4 +16,4 @@ ADD BubbleUPnPServerLauncher.jar .
 ADD launch.sh .
 RUN chmod +x launch.sh
 
-CMD ["launch.sh"]
+CMD ["sh", "launch.sh"]
