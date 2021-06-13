@@ -5,15 +5,16 @@ RUN set -ex && \
 
 EXPOSE 58050/tcp 58051/tcp 1900/udp
 
+CMD ["/bubbleupnpserver/launch.sh"]
+
 RUN set -ex && \
-    mkdir /bubbleupnpserver
+    mkdir /bubbleupnpserver && \
+    cd /bubbleupnpserver && \
+    wget http://www.bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip && \
+    unzip BubbleUPnPServer-distrib.zip && \
+    chmod +x launch.sh && \
+    rm BubbleUPnPServer-distrib.zip
 
 WORKDIR /bubbleupnpserver
 
-ADD bcprov-jdk16-146.jar .
 ADD BubbleUPnPServer.jar .
-ADD BubbleUPnPServerLauncher.jar .
-ADD launch.sh .
-RUN chmod +x launch.sh
-
-CMD ["sh", "launch.sh"]
