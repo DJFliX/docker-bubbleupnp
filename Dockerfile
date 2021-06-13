@@ -12,6 +12,6 @@ RUN set -ex && \
 
 WORKDIR /bubbleupnpserver
 
-ADD *.jar .
+ADD *.jar ./
 ADD launch.sh .
 RUN chmod +x launch.sh
